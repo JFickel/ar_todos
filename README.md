@@ -71,4 +71,3 @@ Create a file in the application root directory, e.g., `todo.rb`, to act as your
     <td>Your main application file; **do not** add user-facing code to this file.  Your application should include this file.</td>
   </tr>
 </table>
-
