@@ -13,7 +13,6 @@ elsif View.request_complete
   View.display_list
 
 elsif View.request_list
-  View.request_list
   View.display_list
   
 end
