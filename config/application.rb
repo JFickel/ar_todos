@@ -3,9 +3,20 @@ require 'sqlite3'
 require 'active_record'
 require 'logger'
 
+# p __FILE__
+# p File.dirname(__FILE__)
+# p File.join(File.dirname(__FILE__), "..")
+# p File.expand_path(File.join(File.dirname(__FILE__), ".."))
+
 APP_ROOT = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 
+# p APP_ROOT
+
 APP_NAME = APP_ROOT.basename.to_s
+
+# p APP_NAME
+
+# p APP_ROOT.join('db', APP_NAME + ".db").to_s
 
 DB_PATH  = APP_ROOT.join('db', APP_NAME + ".db").to_s
 
