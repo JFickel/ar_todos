@@ -30,5 +30,14 @@ module View
       return false
     end
   end
+
+  def self.display_list
+    i=1
+    Task.find_each do |task|
+      puts "#{i}. #{task.complete ? '[X]' : '[ ]' } #{task.description}"
+      i+=1
+    end
+  end
+  
 end
 
