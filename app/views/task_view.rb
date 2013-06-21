@@ -3,7 +3,7 @@ require_relative '../../config/application'
 module View
   def self.request_add
     if ARGV[0]=='add'
-      return ARGV[1..-1].join
+      return ARGV[1..-1].join(" ")
     end
   end
 
