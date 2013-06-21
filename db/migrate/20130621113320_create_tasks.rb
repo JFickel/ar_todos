@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration
   def up
     create_table :tasks do |t|
       t.string :description
-      t.boolean :complete
+      t.boolean :complete, :default => false
     end
   end
 
