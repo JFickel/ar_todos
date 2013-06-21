@@ -8,36 +8,36 @@ require 'logger'
 # p File.join(File.dirname(__FILE__), "..")
 # p File.expand_path(File.join(File.dirname(__FILE__), ".."))
 
-APP_ROOT = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
+app_root = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 
-# p APP_ROOT
+# p app_root
 
-APP_NAME = APP_ROOT.basename.to_s
+app_name = app_root.basename.to_s
 
-# p APP_NAME
+# p app_name
 
-# p APP_ROOT.join('db', APP_NAME + ".db").to_s
+# p app_root.join('db', app_name + ".db").to_s
 
-DB_PATH  = APP_ROOT.join('db', APP_NAME + ".db").to_s
+db_path  = app_root.join('db', app_name + ".db").to_s
 
 if ENV['DEBUG']
   ActiveRecord::Base.logger = Logger.new(STDOUT)
 end
 
-# Automatically load every file in APP_ROOT/app/models/*.rb, e.g.,
+# Automatically load every file in app_root/app/models/*.rb, e.g.,
 #   autoload "Person", 'app/models/person.rb'
 #
 # See http://www.rubyinside.com/ruby-techniques-revealed-autoload-1652.html
 
-Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
+Dir[app_root.join('app', 'models', '*.rb')].each do |model_file|
   filename = File.basename(model_file).gsub('.rb', '')
   autoload ActiveSupport::Inflector.camelize(filename), model_file
 end
 
-Dir[APP_ROOT.join('app', 'views', '*.rb')].each do |view_file|
+Dir[app_root.join('app', 'views', '*.rb')].each do |view_file|
   filename = File.basename(view_file).gsub('.rb', '')
   require view_file
 end
 
 ActiveRecord::Base.establish_connection :adapter  => 'sqlite3',
-                                        :database => DB_PATH
+                                        :database => db_path

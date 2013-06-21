@@ -22,8 +22,8 @@ module View
   def self.request_list
     if ARGV[0]=='list'
       i=1
-      Tasks.find_each do |task|
-        puts "#{i}. #{task.complete ? '[ ]' : '[X]' } #{task.description}"
+      Task.find_each do |task|
+        puts "#{i}. #{task.complete ? '[X]' : '[ ]' } #{task.description}"
         i+=1
       end
     else
@@ -31,3 +31,4 @@ module View
     end
   end
 end
+
